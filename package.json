@@ -1,0 +1,48 @@
+{
+	"name": "abort-timer",
+	"version": "0.0.0-development",
+	"description": "Create an AbortSignal that aborts after a timeout, with reset and clear",
+	"license": "MIT",
+	"repository": "mstuart/abort-timer",
+	"funding": "https://github.com/sponsors/mstuart",
+	"author": {
+		"name": "Mark Stuart",
+		"email": "mstuart@users.noreply.github.com",
+		"url": "https://github.com/mstuart"
+	},
+	"type": "module",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"test": "xo && ava && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"abort",
+		"timer",
+		"timeout",
+		"signal",
+		"abortcontroller",
+		"cancel",
+		"disposable"
+	],
+	"devDependencies": {
+		"ava": "^6.0.0",
+		"tsd": "^0.31.0",
+		"xo": "^0.60.0"
+	},
+	"xo": {
+		"rules": {
+			"no-use-extend-native/no-use-extend-native": "off"
+		}
+	}
+}
