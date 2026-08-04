@@ -6,6 +6,7 @@ test('returns an object with signal, reset, clear, and Symbol.dispose', t => {
 	t.truthy(timer.signal);
 	t.is(typeof timer.reset, 'function');
 	t.is(typeof timer.clear, 'function');
+	// eslint-disable-next-line unicorn/no-nonstandard-builtin-properties -- Symbol.dispose is TC39 Explicit Resource Management (Stage 3+), not yet in eslint-plugin-unicorn's allowlist
 	t.is(typeof timer[Symbol.dispose], 'function');
 	timer.clear();
 });
@@ -70,6 +71,7 @@ test('reset without arguments uses original duration', async t => {
 
 test('Symbol.dispose calls clear', async t => {
 	const timer = abortTimer(50);
+	// eslint-disable-next-line unicorn/no-nonstandard-builtin-properties -- Symbol.dispose is TC39 Explicit Resource Management (Stage 3+), not yet in eslint-plugin-unicorn's allowlist
 	timer[Symbol.dispose]();
 	await new Promise(resolve => {
 		setTimeout(resolve, 100);
@@ -90,11 +92,11 @@ test('throws TypeError for zero', t => {
 });
 
 test('throws TypeError for Infinity', t => {
-	t.throws(() => abortTimer(Number.POSITIVE_INFINITY), {instanceOf: TypeError});
+	t.throws(() => abortTimer(Infinity), {instanceOf: TypeError});
 });
 
 test('throws TypeError for NaN', t => {
-	t.throws(() => abortTimer(Number.NaN), {instanceOf: TypeError});
+	t.throws(() => abortTimer(NaN), {instanceOf: TypeError});
 });
 
 test('TimeoutError has correct name', t => {

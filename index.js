@@ -44,6 +44,7 @@ export default function abortTimer(milliseconds) {
 		signal: controller.signal,
 		reset,
 		clear,
+		// eslint-disable-next-line unicorn/no-nonstandard-builtin-properties -- Symbol.dispose is TC39 Explicit Resource Management (Stage 3+), not yet in eslint-plugin-unicorn's allowlist
 		[Symbol.dispose]() {
 			clear();
 		},
