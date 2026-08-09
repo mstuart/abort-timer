@@ -1,6 +1,6 @@
 {
 	"name": "abort-timer",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Create an AbortSignal that aborts after a timeout, with reset and clear",
 	"license": "MIT",
 	"repository": "mstuart/abort-timer",
