@@ -44,5 +44,8 @@
 		"rules": {
 			"no-use-extend-native/no-use-extend-native": "off"
 		}
+	},
+	"overrides": {
+		"@eslint/plugin-kit": ">=0.3.4"
 	}
 }
