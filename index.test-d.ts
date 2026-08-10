@@ -1,5 +1,5 @@
-import {expectType, expectError} from 'tsd';
-import abortTimer, {type AbortTimer, TimeoutError} from './index.js';
+import { expectError, expectType } from "tsd";
+import abortTimer, { type AbortTimer, TimeoutError } from "./index.js";
 
 const timer = abortTimer(1000);
 
@@ -11,7 +11,7 @@ expectType<void>(timer.clear());
 
 const error = new TimeoutError();
 expectType<TimeoutError>(error);
-expectType<'TimeoutError'>(error.name);
+expectType<"TimeoutError">(error.name);
 
 expectError(abortTimer());
-expectError(abortTimer('string'));
+expectError(abortTimer("string"));
