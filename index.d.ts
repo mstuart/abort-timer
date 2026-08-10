@@ -2,29 +2,28 @@
 Error thrown when the timer expires.
 */
 export class TimeoutError extends Error {
-	readonly name: 'TimeoutError';
+  readonly name: "TimeoutError";
 }
 
-export type AbortTimer = {
-	/**
-	The abort signal. Pass this to any API that accepts an `AbortSignal`.
+export interface AbortTimer {
+  /**
+	Clear the timer without aborting the signal.
 	*/
-	readonly signal: AbortSignal;
+  clear: () => void;
 
-	/**
+  /**
 	Reset the timer. Optionally provide a new duration in milliseconds.
 
 	@param milliseconds - New timeout duration. Defaults to the original duration.
 	*/
-	reset(milliseconds?: number): void;
-
-	/**
-	Clear the timer without aborting the signal.
+  reset: (milliseconds?: number) => void;
+  /**
+	The abort signal. Pass this to any API that accepts an `AbortSignal`.
 	*/
-	clear(): void;
+  readonly signal: AbortSignal;
 
-	[Symbol.dispose](): void;
-};
+  [Symbol.dispose]: () => void;
+}
 
 /**
 Create an AbortSignal that aborts after a timeout, with reset and clear.

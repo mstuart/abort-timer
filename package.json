@@ -1,49 +1,49 @@
 {
-	"name": "abort-timer",
-	"version": "1.0.0",
-	"description": "Create an AbortSignal that aborts after a timeout, with reset and clear",
-	"license": "MIT",
-	"repository": "mstuart/abort-timer",
-	"funding": "https://github.com/sponsors/mstuart",
-	"author": {
-		"name": "Mark Stuart",
-		"email": "mstuart@users.noreply.github.com",
-		"url": "https://github.com/mstuart"
-	},
-	"type": "module",
-	"exports": {
-		"types": "./index.d.ts",
-		"default": "./index.js"
-	},
-	"sideEffects": false,
-	"engines": {
-		"node": ">=20"
-	},
-	"scripts": {
-		"test": "ava && tsd",
-		"check": "ultracite check",
-		"fix": "ultracite fix"
-	},
-	"files": [
-		"index.js",
-		"index.d.ts"
-	],
-	"keywords": [
-		"abort",
-		"timer",
-		"timeout",
-		"signal",
-		"abortcontroller",
-		"cancel",
-		"disposable"
-	],
-	"devDependencies": {
-		"@biomejs/biome": "2.5.6",
-		"ava": "^7.0.0",
-		"tsd": "^0.33.0",
-		"ultracite": "7.10.2"
-	},
-	"overrides": {
-		"@eslint/plugin-kit": ">=0.3.4"
-	}
+  "name": "abort-timer",
+  "version": "1.0.0",
+  "description": "Create an AbortSignal that aborts after a timeout, with reset and clear",
+  "keywords": [
+    "abort",
+    "timer",
+    "timeout",
+    "signal",
+    "abortcontroller",
+    "cancel",
+    "disposable"
+  ],
+  "repository": "mstuart/abort-timer",
+  "funding": "https://github.com/sponsors/mstuart",
+  "license": "MIT",
+  "author": {
+    "name": "Mark Stuart",
+    "email": "mstuart@users.noreply.github.com",
+    "url": "https://github.com/mstuart"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "types": "./index.d.ts",
+    "default": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "test": "ava && tsd"
+  },
+  "overrides": {
+    "@eslint/plugin-kit": ">=0.3.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.6",
+    "ava": "^7.0.0",
+    "tsd": "^0.33.0",
+    "ultracite": "7.10.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }
