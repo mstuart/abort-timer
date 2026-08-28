@@ -38,11 +38,11 @@ export default function abortTimer(milliseconds) {
   };
 
   const reset = (ms) => {
-    clear();
     if (ms !== undefined) {
       validateMilliseconds(ms);
-      timeoutMs = ms;
     }
+    clear();
+    if (ms !== undefined) timeoutMs = ms;
 
     timeoutId = startTimeout(timeoutMs);
   };
