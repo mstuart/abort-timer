@@ -42,7 +42,9 @@ export default function abortTimer(milliseconds) {
       validateMilliseconds(ms);
     }
     clear();
-    if (ms !== undefined) timeoutMs = ms;
+    if (ms !== undefined) {
+      timeoutMs = ms;
+    }
 
     timeoutId = startTimeout(timeoutMs);
   };
