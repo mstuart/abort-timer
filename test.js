@@ -127,3 +127,10 @@ test("reset with new duration changes the timeout", async (t) => {
   });
   t.true(timer.signal.aborted);
 });
+
+test("reset rejects invalid durations without replacing the active timer", (t) => {
+  const timer = abortTimer(1000);
+  t.throws(() => timer.reset(0), { instanceOf: TypeError });
+  t.throws(() => timer.reset(Number.NaN), { instanceOf: TypeError });
+  timer.clear();
+});

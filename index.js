@@ -6,15 +6,15 @@ export class TimeoutError extends Error {
 }
 
 export default function abortTimer(milliseconds) {
-  if (
-    typeof milliseconds !== "number" ||
-    !Number.isFinite(milliseconds) ||
-    milliseconds <= 0
-  ) {
-    throw new TypeError(
-      "Expected `milliseconds` to be a positive finite number"
-    );
-  }
+  const validateMilliseconds = (value) => {
+    if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+      throw new TypeError(
+        "Expected `milliseconds` to be a positive finite number"
+      );
+    }
+  };
+
+  validateMilliseconds(milliseconds);
 
   const controller = new AbortController();
   let timeoutMs = milliseconds;
@@ -40,6 +40,7 @@ export default function abortTimer(milliseconds) {
   const reset = (ms) => {
     clear();
     if (ms !== undefined) {
+      validateMilliseconds(ms);
       timeoutMs = ms;
     }
 
