@@ -1,6 +1,39 @@
 import test from "ava";
 import abortTimer, { TimeoutError } from "./index.js";
 
+test("rejects durations above the supported timer maximum", (t) => {
+  t.throws(() => abortTimer(2 ** 31), { instanceOf: RangeError });
+  const timer = abortTimer(2_147_483_647);
+  t.false(timer.signal.aborted);
+  timer.clear();
+});
+
+test("overflowing reset preserves the active timer", async (t) => {
+  const timer = abortTimer(20);
+  t.throws(() => timer.reset(2 ** 31), { instanceOf: RangeError });
+  await new Promise((resolve) => {
+    const keepAlive = setTimeout(resolve, 200);
+    timer.signal.addEventListener(
+      "abort",
+      () => {
+        clearTimeout(keepAlive);
+        resolve();
+      },
+      { once: true }
+    );
+  });
+  t.true(timer.signal.aborted);
+});
+
+test("argument-free reset retains the most recently configured duration", async (t) => {
+  const timer = abortTimer(20);
+  timer.reset(500);
+  timer.reset();
+  await new Promise((resolve) => setTimeout(resolve, 80));
+  t.false(timer.signal.aborted);
+  timer.clear();
+});
+
 test("returns an object with signal, reset, clear, and Symbol.dispose", (t) => {
   const timer = abortTimer(1000);
   t.truthy(timer.signal);

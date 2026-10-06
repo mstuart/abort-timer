@@ -14,7 +14,7 @@ export interface AbortTimer {
   /**
 	Reset the timer. Optionally provide a new duration in milliseconds.
 
-	@param milliseconds - New timeout duration. Defaults to the original duration.
+	@param milliseconds - New timeout duration. Defaults to the most recently configured duration.
 	*/
   reset: (milliseconds?: number) => void;
   /**
@@ -28,7 +28,7 @@ export interface AbortTimer {
 /**
 Create an AbortSignal that aborts after a timeout, with reset and clear.
 
-@param milliseconds - The timeout duration in milliseconds.
+@param milliseconds - A positive finite timeout duration, at most 2147483647 milliseconds.
 @returns An object with the abort signal, reset, and clear functions.
 
 @example

@@ -67,7 +67,7 @@ Returns an object with `signal`, `reset`, `clear`, and `Symbol.dispose`.
 
 Type: `number`
 
-The timeout duration in milliseconds. Must be a positive finite number.
+The timeout duration in milliseconds. Must be a positive finite number no greater than 2,147,483,647. Larger durations throw a `RangeError` instead of overflowing to an immediate timeout.
 
 ### Return value
 
@@ -79,7 +79,7 @@ The abort signal. Pass this to any API that accepts an `AbortSignal`.
 
 #### reset(milliseconds?)
 
-Reset the timer. Optionally provide a new duration in milliseconds. Defaults to the original duration.
+Reset the timer. Optionally provide a new duration in milliseconds. Defaults to the most recently configured duration. The same duration limits apply as when creating the timer.
 
 #### clear()
 
