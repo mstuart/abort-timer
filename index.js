@@ -1,3 +1,5 @@
+const maximumTimeout = 2_147_483_647;
+
 export class TimeoutError extends Error {
   constructor(message) {
     super(message ?? "The operation was aborted due to timeout");
@@ -10,6 +12,11 @@ export default function abortTimer(milliseconds) {
     if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
       throw new TypeError(
         "Expected `milliseconds` to be a positive finite number"
+      );
+    }
+    if (value > maximumTimeout) {
+      throw new RangeError(
+        `Expected \`milliseconds\` to be at most ${maximumTimeout}`
       );
     }
   };
